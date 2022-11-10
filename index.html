@@ -5,215 +5,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: content-box;
-        }
-
-        div {
-            display: inline-block;
-        }
-
-        .big {
-            width: 150px;
-            height: 150px;
-            border: 7px solid #D9D9D9;
-            border-radius: 50%;
-
-
-        }
-
-        .medium {
-            width: 75px;
-            height: 75px;
-            border: 7px solid #D9D9D9;
-            border-radius: 50%;
-            margin: 0 8px;
-
-        }
-
-        .small {
-            width: 30px;
-            height: 30px;
-            border: 8px solid #D9D9D9;
-            border-radius: 50%;
-            background-color: #555555;
-            margin: 0 8px;
-        }
-
-        .tiny {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: #D9D9D9;
-            margin: 0 20px;
-            
-        }
-
-        .wrapper {
-
-            margin: 0 auto;
-            width: 99%;
-            margin-top: 100px;
-
-            text-align: center;
-
-
-        }
-        .slide-item p{
-            position: relative;
-             top: 48px;
-             display: none;
-        }
-        .show{
-            display: block;
-        }
-        .slide-item>img {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            display: none;
-        }
-
-        .slide-item .show {
-            display: block;
-            top: 48px;
-        }
-    </style>
+    <title>Timeline Slider</title>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="slide-item tiny">
-            <img src="images/img1.png" alt="">
-            <p >2012</p>
+        <div class="timeline">
+            <div>
+                <img src="images/img1.png" alt="">
+                <p>2011</p>
+            </div>
+            <div>
+                <img src="images/img2.png" alt="">
+                <p>2012</p>
+            </div>
+            <div>
+                <img src="images/img3.png" alt="">
+                <p>2013</p>
+            </div>
+            <div>
+                <img src="images/img1.png" alt="">
+                <p>2014</p>
+            </div>
+            <div>
+                <img src="images/img3.png" alt="">
+                <p>2015</p>
+            </div>
+            <div>
+                <img src="images/img1.png" alt="">
+                <p>2016</p>
+            </div>
+            <div>
+                <img src="images/img3.png" alt="">
+                <p>2017</p>
+            </div>
+
         </div>
-        <div class="slide-item tiny">
-            <img src="images/img2.png" alt="">
-            <p >2013</p>
-        </div>
-        <div class="slide-item tiny">
-            <img src="images/img3.png" alt="">
-            <p >2014</p>
-        </div>
-        <div class="slide-item tiny">
-            <img src="images/img1.png" alt="">
-            <p >2015</p>
-        </div>
-        <div class="slide-item tiny">
-            <img src="images/img2.png" alt="">
-            <p >2016</p>
-        </div>
-        <div class="slide-item tiny">
-            <img src="images/img3.png" alt="">
-            <p >2017</p>
-        </div>
-        <div class="slide-item tiny">
-            <img src="images/img1.png" alt="">
-            <p >2018</p>
-        </div>
-        <div class="slide-item tiny">
-            <img src="images/img1.png" alt="">
-            <p >2019</p>
-        </div>
-        <div class="slide-item tiny">
-            <img src="images/img2.png" alt=""><p >2020</p>
-        </div>
-        <div class="slide-item tiny">
-            <img src="images/img3.png" alt=""><p >2021</p>
-        </div>
-        <div class="slide-item tiny">
-            <img src="images/img1.png" alt=""><p >2022</p>
-        </div>
-       
-        
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script>
-        let middle = Math.ceil($('.slide-item').length / 2) - 1;
-        let dots = $('.slide-item');
-        for (let i = 0; i < dots.length; i++) {
-            $(dots[i]).attr('id', i);;
-        }
-        // item before middle
-        addHover(middle);
-        // setInterval(()=>{
-        //     if(middle<dots.length){
-        //         middle=middle+1;
-        //     }else{
-        //         middle=0;
-        //     }
-        //     console.log(middle);
-        //     addHover(middle);
-        //     removeHover(middle);
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 
-        // },1000);
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script src="script.js"></script>
 
-        console.log();
-
-        $('.slide-item').on('mouseover', itemHover);
-        $('.slide-item').on('mouseout', itemLeave);
-
-
-
-
-        function itemHover(e) {
-
-            // $(this).removeClass('tiny').removeClass('small').addClass('big');
-            // $(this).find('img').addClass('show')
-            // console.log($(this).attr('id'));
-            dots.removeClass('small').removeClass('big').addClass('tiny');
-            addHover(parseInt($(this).attr('id')))
-
-        }
-        function itemLeave(e) {
-            removeHover(parseInt($(this).attr('id')))
-            // $(this).find('img').removeClass('show')
-            // $(this).removeClass('big').addClass('tiny');
-
-
-        }
-
-        function addHover(middleitem) {
-            if(middleitem>0){
-            $(dots.get(middleitem - 2)).removeClass('tiny').addClass('small').find('p').addClass('show');
-            $(dots.get(middleitem - 2)).find('p').addClass('show');
-            $(dots.get(middleitem - 1)).removeClass('tiny').addClass('medium').find('img').addClass('show');
-            $(dots.get(middleitem - 1)).removeClass('tiny').addClass('medium').find('p').addClass('show');
-            }
-            //middle item
-            $(dots.get(middleitem)).removeClass('tiny medium').addClass('big').find('img').addClass('show')
-            $(dots.get(middleitem)).removeClass('tiny medium').addClass('big').find('p').addClass('show')
-            //item after middle
-            if(middleitem<dots.length){
-            $(dots.get(middleitem + 1)).removeClass('tiny').addClass('medium').find('img').addClass('show')
-            $(dots.get(middleitem + 1)).removeClass('tiny').addClass('medium').find('p').addClass('show')
-            $(dots.get(middleitem + 2)).removeClass('tiny').addClass('small').find('p').removeClass('hide').addClass('show');
-            }
-
-        }
-        function removeHover(middleitem) {
-            $(dots.get(middleitem - 2)).find('img').removeClass('show');
-            $(dots.get(middleitem - 2)).find('p').removeClass('show').addClass('hide');
-            // $(dots.get(middleitem-1)).removeClass('tiny').addClass('small')
-            // $(dots.get(middleitem-1)).find('img').removeClass('show')
-            //middle item
-            // $(dots.get(middleitem)).removeClass('tiny').addClass('big')
-            // $(dots.get(middleitem)).find('img').removeClass('show')
-
-            //item after middle
-            // $(dots.get(middleitem+1)).removeClass('tiny').addClass('small')
-            // $(dots.get(middleitem+1)).find('img').removeClass('show')
-            $(dots.get(middleitem + 2)).find('p').removeClass('show').addClass('hide');
-            $(dots.get(middleitem + 2)).find('img').removeClass('show');
-        }
-
-
-
-    </script>
 </body>
 
 </html>
