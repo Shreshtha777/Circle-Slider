@@ -37,7 +37,9 @@
     margin: 0 10px;
     position: relative;
 }
-
+.slick-active{
+    animation: changeSize2 0.5s ease-in-out;
+}
 .slick-current.slick-active.slick-center {
     width: 150px;
     height: 150px;
@@ -46,6 +48,10 @@
     animation: changeSize 0.5s ease-in-out;
 }
 @keyframes changeSize {
+    from {scale: 0.75}
+    to {scale: 1}
+  }
+  @keyframes changeSize2 {
     from {scale: 0.75}
     to {scale: 1}
   }
